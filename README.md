@@ -1,2 +1,2 @@
-# sfdxgithubactions
-Playground to try-out Sfdx with Github Actions
+# SFDX GitHub Actions
+Playground to try-out SFDX with Github Actions
