@@ -14,6 +14,13 @@ jobs:
     - name: Decrypt Dev Hub file
       env:
         SALESFORCE_JWT_SECRET_KEY_PASS: ${{ secrets.SALESFORCE_JWT_SECRET_KEY_PASS }}
-      run: gpg --quiet --batch --yes --decrypt --passphrase="$SALESFORCE_JWT_SECRET_KEY_PASS" --output $GITHUB_WORKSPACE/.github/devhub/server.key $GITHUB_WORKSPACE/.github/devhub/server.key.gpg
+      run: gpg \
+      --quiet \
+      --batch \
+      --yes \
+      --decrypt \
+      --passphrase="$SALESFORCE_JWT_SECRET_KEY_PASS" \
+      --output $GITHUB_WORKSPACE/.github/devhub/server.key \
+      $GITHUB_WORKSPACE/.github/devhub/server.key.gpg
     - name: Authenticate DevHub
       run: node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile $GITHUB_WORKSPACE/.github/devhub/server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
