@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
-      run: npm install sfdx
+      run: npm install sfdx-cli
     - name: Decrypt Dev Hub file
       env:
         SALESFORCE_JWT_SECRET_KEY_PASS: ${{ secrets.SALESFORCE_JWT_SECRET_KEY_PASS }}
