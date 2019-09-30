@@ -14,5 +14,4 @@ jobs:
     - name: Decrypt Dev Hub file
       env:
         DEVHUB_PASS: ${{ secrets.DEVHUB_PASS }}
-      run: |
-        gpg --quiet --batch --yes --decrypt --passphrase="$DEVHUB_PASS" --output $GITHUB_WORKSPACE/devhub/server.key $GITHUB_WORKSPACE/devhub/server.key.gpg
+      run: gpg --quiet --batch --yes --decrypt --passphrase="$DEVHUB_PASS" --output $GITHUB_WORKSPACE/.github/devhub/server.key $GITHUB_WORKSPACE/.github/devhub/server.key.gpg
