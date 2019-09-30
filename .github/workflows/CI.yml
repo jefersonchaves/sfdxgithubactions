@@ -15,11 +15,4 @@ jobs:
       env:
         DEVHUB_PASS: ${{ secrets.DEVHUB_PASS }}
       run: |
-        gpg
-        --quiet
-        --batch
-        --yes
-        --decrypt
-        --passphrase="$DEVHUB_PASS"
-        --output $HOME/devhub/server.key
-        server.key.gpg
+        gpg --quiet --batch --yes --decrypt --passphrase="$DEVHUB_PASS" --output $HOME/devhub/server.key server.key.gpg
