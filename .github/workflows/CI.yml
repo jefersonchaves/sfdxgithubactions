@@ -20,6 +20,6 @@ jobs:
         --batch
         --yes
         --decrypt
-        --passphrase="$DEVHUB_PASS" \
+        --passphrase="$DEVHUB_PASS"
         --output $HOME/devhub/server.key
         server.key.gpg
