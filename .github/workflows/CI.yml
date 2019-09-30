@@ -9,11 +9,17 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
     - name: Install Dependencies
       run: npm install sfdx
+    - name: Decrypt Dev Hub file
+      env:
+        DEVHUB_PASS: ${{ secrets.DEVHUB_PASS }}
+      run: |
+        gpg
+        --quiet
+        --batch
+        --yes
+        --decrypt
+        --passphrase="$DEVHUB_PASS" \
+        --output $HOME/devhub/server.key
+        server.key.gpg
