@@ -13,5 +13,5 @@ jobs:
       run: npm install sfdx-cli
     - name: Authenticate DevHub
       run: |
-        echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
+        echo "${{ secrets.SALESFORCE_JWT_SECRET_KEY }}" > server.key
         node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
