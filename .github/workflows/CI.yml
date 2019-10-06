@@ -11,10 +11,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Install Dependencies
       run: npm install sfdx-cli
-    - name: Decrypt Dev Hub file
-      env:
-        SALESFORCE_JWT_SECRET_KEY_PASS: ${{ secrets.SALESFORCE_JWT_SECRET_KEY_PASS }}
-      run: gpg --quiet --batch --yes --decrypt --passphrase="$SALESFORCE_JWT_SECRET_KEY_PASS" --output $GITHUB_WORKSPACE/.github/devhub/server.key $GITHUB_WORKSPACE/.github/devhub/server.key.gpg
     - name: Authenticate DevHub
       run: |
         echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
